@@ -1,0 +1,24 @@
+{
+  "name": "nboat4",
+  "version": "0.1.0",
+  "private": false,
+  "license": "mit",
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "7.0.0"
+  },
+  "dependencies": {
+    "hexo": "^7.0.0",
+    "hexo-pagination": "^3.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-stylus": "^3.0.0",
+    "hexo-server": "^3.0.0",
+    "marked": "^11.0.0",
+    "marked-gfm-heading-id": "^3.1.2"
+  }
+}

@@ -1,0 +1,30 @@
+.post-list
+    width 100%
+    margin 0 10px
+
+.post-item
+    width 100%
+    text-align left
+    &:not(:last-child)
+        margin-bottom 10px
+
+.post-item-date
+    font-size 0.9em
+    color #555
+
+side-card-height = 130px
+
+.side-card
+    .side-card-body
+        width 220px
+        min-height side-card-height
+        max-width 100%
+
+    .side-image
+        width side-card-height
+        height side-card-height
+
+    .description
+        text-overflow ellipsis
+        overflow hidden
+

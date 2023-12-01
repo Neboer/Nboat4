@@ -1,0 +1,69 @@
+@import '../libs/vars.styl'
+
+.alignement
+    margin-right .5em
+
+.banner
+    max-width 100%
+
+.biggest
+    width 75%
+    margin auto
+
+#icon-plate
+    width fit-content
+    position absolute
+    right 13%
+
+#footer
+    text-align center
+    color grey
+    display block
+    margin-top 7em
+
+#banner
+    width 30px
+    position relative
+    bottom 5px
+    right 3px
+
+.no-decorate
+    text-decoration none
+
+#big-title
+    font-family -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    color #212529;
+    text-align center!important;
+    box-sizing border-box;
+    margin-top 0;
+    margin-bottom .5rem;
+    font-weight 500;
+    line-height 1.2;
+    font-size 2.5rem;
+
+#small-title
+    font-family -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    line-height 1.5;
+    color #212529;
+    text-align center!important;
+    box-sizing border-box;
+    font-size 80%;
+    font-weight 400;
+
+
+@media (max-width mobile-breakpoint)
+    .biggest
+        width 90%
+        margin auto
+
+    #icon-plate
+        right 0
+        display flex
+        flex-direction column
+    
+    #divide-image-wide
+        display none  !important
+
+    #divide-image-narrow
+        width 100%
+        display block  !important

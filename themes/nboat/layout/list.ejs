@@ -1,0 +1,31 @@
+<div class="list-page-container">
+    <div class="post-list list-group list-group-flush">
+        <% var blogs = page.posts %>
+        <% blogs.forEach((blog, index) => { %>
+            <%- partial('partial/list_item', get_blog_info(blog)) %>
+        <% }) %>
+    </div>
+
+    <div class="recommend-list d-none d-xxl-block">
+        <div class="card">
+            <h5 class="card-header">
+                <i class="fa-solid fa-hand-point-right"></i>
+                推荐阅读
+            </h5>
+            <div class="card-body">
+                <!-- <h6 class="card-subtitle mb-2 text-body-secondary">...</h6> -->
+                <% var recommend_blogs = site.posts.filter(p => p.type === "blog").sort('mark', 'desc').slice(0, 10); %>
+                <div class="list-group list-group-flush">
+                    <% recommend_blogs.forEach((blog, index) => { %>
+                        <a href="<%- url_for(blog.path) %>"
+                           class="list-group-item list-group-item-action"><%= blog.title %></a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- partial('./partial/pagination.ejs') %>
+

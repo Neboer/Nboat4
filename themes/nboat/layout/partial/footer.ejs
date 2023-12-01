@@ -1,0 +1,22 @@
+<footer>
+    <div class="footer-container">
+        <div class="footer-meta">
+            <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+                <a property="dct:title" rel="cc:attributionURL" href="https://www.neboer.site">Neboer's Boat</a> by
+                <a rel="cc:attributionURL dct:creator" property="cc:attributionName"
+                    href="https://www.neboer.site">Neboer</a> is licensed under
+                <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank"
+                    rel="license noopener noreferrer" style="display:inline-block;">
+                    CC BY 4.0</a>
+                <img class="footer-icon" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+                <img class="footer-icon" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+                <br>
+        </div>
+        </a>
+        </p>
+    </div>
+    <%- partial('partial/seprator') %>
+    <% if ( is_current("/", true)) { %>
+        <a id="footer" href="http://beian.miit.gov.cn/">辽ICP备2020011805号</a>
+    <% } %>
+</footer>

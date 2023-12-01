@@ -1,0 +1,17 @@
+@import '../libs/vars.styl'
+
+#divide-image-wide
+    width 100%
+    display block
+
+#divide-image-narrow
+    width 100%
+    display none
+
+@media (max-width mobile-breakpoint)
+    #divide-image-wide
+        display none  !important
+
+    #divide-image-narrow
+        width 100%
+        display block  !important

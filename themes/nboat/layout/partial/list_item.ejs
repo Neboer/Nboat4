@@ -1,0 +1,35 @@
+<div class="list-item list-group-item py-3">
+    <div class="base-info">
+        <div class="time">创建: <%= created_date %>
+        </div>
+        <div class="time">修改: <%= updated_date %>
+        </div>
+    </div>
+
+    <div class="full-body position-relative">
+        <div class="content">
+
+            <a class="title stretched-link text-reset link-offset-2 link-offset-2-hover link-underline-dark link-underline-opacity-0 link-underline-opacity-100-hover"
+               href="<%- url %>"><%= title %></a>
+
+            <p class="description">
+                <%= discription %>
+            </p>
+        </div>
+        <% if (small_cover) { %>
+            <div class="image">
+                <%- image_tag(small_cover) %>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="foot">
+        <span class="word-count"> <%= len %> 字 </span>
+        <span class="tags">
+            <% tags.forEach( (t, index) => { %>
+                <span class="badge text-bg-<%- (index === 0) ? 'primary' : 'light' %>"> <%= t.name %> </span>
+            <% }) %>
+        </span>
+    </div>
+
+</div>

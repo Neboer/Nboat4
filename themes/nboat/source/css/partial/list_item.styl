@@ -1,0 +1,87 @@
+@import '../libs/vars.styl'
+
+.list-item
+    width 880px
+    max-width 100%
+
+    .base-info
+        display flex
+        font-size 14px
+
+    .full-body
+        display flex
+        height 144px
+
+    .content
+        flex 1
+
+    .title
+        max-height 72px
+        text-overflow ellipsis
+        overflow hidden
+        font-size 25px
+        font-weight 600
+        margin-bottom 12px
+
+    .image
+        margin-left 20px
+        width 144px
+        height 144px
+
+    .description
+        display block
+        max-height 72px
+        line-height 24px
+        overflow-ellipsis(3)
+
+    .time
+        margin-right 10px
+        color grey
+
+    .foot
+        overflow hidden
+        white-space nowrap
+        text-overflow ellipsis
+
+        .word-count
+            color grey
+            font-size 15px
+            width 5em
+            display inline-block
+            text-align justify
+
+.hover-underline
+    text-decoration none
+
+    &:hover
+        text-decoration underline
+
+@media (max-width grid-breakpoints-xxl)
+    .list-item
+        width unset
+
+@media (max-width grid-breakpoints-md)
+    .list-item
+        width unset
+
+        .title
+            font-size 18px
+
+        .full-body
+            height 56px
+
+        .description
+            display none
+
+        .image
+            width 80px
+            height 56px
+            margin-left 0
+
+        .tags span:nth-child(n+4)
+            display none
+
+@media (max-width: 468px)
+    .list-item
+        .tags span:nth-child(n+2)
+            display none

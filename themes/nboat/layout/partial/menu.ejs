@@ -1,0 +1,30 @@
+<ul class="nav nav-pills mb-3" id="menu" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link <%= is_current("/", true) ?'active':'' %>" href="<%= url_for('/') %>" role="tab"
+            aria-controls="pills-home" aria-selected="<%= is_current("/", true) ? 'true' : 'false' %>">
+            <i class="fa-solid fa-home"></i>
+            主页
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <%= is_current("list") ?'active':''%>" href="<%= url_for('list') %>" role="tab"
+            aria-controls="pills-list" aria-selected="<%= is_current("list") ? 'true' : 'false' %>">
+            <i class="fa-solid fa-book"></i>
+            文集
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <%= is_current("board") ?'active':'' %>" href="<%= url_for('board') %>" role="tab"
+            aria-controls="pills-board" aria-selected="<%= is_current("board") ? 'true' : 'false' %>">
+            <i class="fa-solid fa-thumbtack"></i>
+            便笺
+        </a>
+    </li>
+    <li class="nav-item <%- is_current("blog")?'':'d-none' %>">
+        <a class="nav-link <%= is_current("blog") ?'active':'' %>" href="<%= url_for('blog') %>" role="tab"
+            aria-controls="pills-board" aria-selected="<%= is_current("blog") ? 'true' : 'false' %>">
+            <i class="fa-solid fa-file"></i>
+            博文
+        </a>
+    </li>
+</ul>

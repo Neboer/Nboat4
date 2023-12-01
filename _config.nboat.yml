@@ -1,0 +1,27 @@
+favicon: images/green-cartoon-coconut-tree.jpg
+
+copyright:
+  name: yourname
+
+license:
+  name: CC-BY-NC-SA 4.0
+  url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+rss:
+  path: atom.xml
+
+mathjax:
+  enable: false
+
+katex:
+  enable: true
+
+utterances:
+  enable: true
+  repo: owner/repo
+  issueTerm: pathname
+  theme: github-light
+
+analytics:
+  enable: true
+  gtag: G-XXXXXXXXXXXX

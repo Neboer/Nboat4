@@ -1,0 +1,47 @@
+<main>
+    <div class="d-lg-flex">
+        <div style="flex: 5">
+            <%- image_tag('images/bikini_atoll_island_slim.jpg', {class: 'my-2'}) %>
+            <%- page.content %>
+        </div>
+        <aside class="mx-4">
+            <div>
+                <h5 style="color: #3f51b5;border-right: darkslateblue solid 4px;border-bottom: darkslateblue solid 1px">
+                    <i class="fa-solid fa-link"></i>
+                    友情链接
+                </h5>
+                <div class="list-group list-group-flush">
+                    <% for (let fl of config.friendship_links) {%>
+                    <a class="list-group-item list-group-item-action"
+                       href="<%- fl.url %>" title="<%- fl.tooltip %>"><%= fl.text %></a>
+                    <% } %>
+                </div>
+
+            </div>
+            <div>
+                <h5
+                    style="color: #3f51b5;border-right: darkslateblue solid 4px;border-bottom: darkslateblue solid 1px;margin-top: 3rem">
+                    <i class="fa-solid fa-link"></i>
+                    站内链接
+                </h5>
+
+                <% for (let sl of config.site_links) { %>
+
+                    <div class="side-card card my-3 position-relative">
+                        <div class="d-flex">
+                            <div class="image-box overflow-hidden flex-shrink-0">
+                                <%- image_tag(sl.img, {class: 'rounded-start side-image'}) %>
+                            </div>
+                            <div class="card-body side-card-body">
+                                <a class="card-title fw-bold fs-5 no-decorate stretched-link" href="<%- sl.url %>"><%= sl.title %></a>
+                                <p class="card-text description"><%= sl.description %></p>
+                            </div>
+                        </div>
+                    </div>
+
+                <% } %>
+
+            </div>
+        </aside>
+    </div>
+</main>

@@ -1,0 +1,18 @@
+<ul class="pagination">
+    <% if (page.prev_link) { %>
+        <li><a href="<%- page.prev_link %>">&lt;</a></li>
+    <% } %>
+
+    <% for (let pi = 1; pi <= page.total; pi++) { %>
+        <% if (pi === page.current) { %>
+            <li class="active"><span><%= page.current %></span></li>
+        <% } else { %>
+            <% var target_href = (pi === 1)?`${page.base}`:`${page.base}page/${pi}` %>
+            <li><a href="<%- target_href %>"> <%= pi %> </a></li>
+        <% } %>
+    <% } %>
+
+    <% if (page.next_link) { %>
+        <li><a href="<%- `${page.next_link}` %>">&gt;</a></li>
+    <% } %>
+</ul>

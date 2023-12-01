@@ -1,0 +1,23 @@
+<div class="main-container">
+    <div class="post-list">
+        <% var bbss = page.posts %>
+        <% bbss.forEach(post => { %>
+            <div class="d-flex m-lg-5 mx-0 my-3">
+                <div class="flex-shrink-0 d-none d-md-block">
+                    <%- image_tag('images/arisa.jpg', {class: 'avatar'}) %>
+                </div>
+                <div class="card mx-4 flex-grow-1">
+                    <div class="card-header">
+                        <span class="text-decoration-underline">Neboer</span>
+                        <span class="text-secondary" title="<%= time(post.date, 'YYYY-MM-DD') %>"><%= post.date.fromNow() %></span>
+                    </div>
+                    <div class="card-body">
+                        <%- post.content %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <%- partial('./partial/pagination.ejs') %>
+</div>

@@ -1,0 +1,42 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <link rel="shortcut icon" href="<%= url_for(theme.favicon) %>" type="image/x-icon"/>
+    <title>
+        <%# deal with different title %>
+        <% if (is_post()) { %>
+            <%= page.title %>
+        <% } else { %>
+            Neboer's Boat |
+            <% if (is_current('/', true)) { %>
+                主页
+            <% } else if (is_current("/list")) { %>
+                文集
+            <% } else if (is_current("/board")) { %>
+                便笺
+            <% } %>
+        <% } %>
+    </title>
+
+    <% if (is_post()) { %>
+        <%- open_graph({description: get_first_notation(page)}) %>
+    <% } else { %>
+        <meta property="og:title" content="Neboer's Boat" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.neboer.site" />
+        <meta property="og:image" content="<%= url_for(theme.favicon) %>" />
+        <meta property="og:description" content="The Homepage Of Neboer" />
+        <meta property="og:locale" content="zh_CN" />
+    <% } %>
+
+    <%- css('css/style') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
+    <%# css('fontawesome/css/fontawesome.min') %>
+    <%# css('fontawesome/css/brands.min') %>
+    <%# css('fontawesome/css/solid.min') %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"></link>
+</head>

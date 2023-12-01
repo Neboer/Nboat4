@@ -1,0 +1,21 @@
+<main>
+    <div class="main-container d-flex">
+        <div class="post-details">
+            <% if (is_post()) { %>
+                <div class="post-title">
+                    <h1><%= page.title %></h1>
+                </div>
+                <div class="post-meta">
+                    <i class="fa-solid fa-clock"></i>&nbsp;<span
+                            class="post-date"><%= date(page.date, 'YYYY/MM/DD') %></span>
+                </div>
+            <% } %>
+            <div class="post-content" data-bs-spy="scroll" data-bs-target=".toc">
+                <%- page.content %>
+            </div>
+        </div>
+        <div class="blog-menu nav flex-column nav-underline d-none d-md-block">
+            <%- toc(page.content, {list_number: false, class_item: 'nav-item', class_link: 'nav-link', class_text: 'text-body-secondary'}) %>
+        </div>
+    </div>
+</main>
