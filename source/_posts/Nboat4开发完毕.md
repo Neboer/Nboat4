@@ -23,7 +23,7 @@ mark: 100
 
 ## Nboat3需要新的继任者
 
-从GitHub记录上来看，Nboat3是2021年4月27日开始开发的，其开发到目前为止，已经过去近3年的时间了。这段时间，前端技术更新换代，Chrome正式版更新到了119.0.6045；nodejs疯狂迭代更新，发布了最新的LTS版本20.10.0；Vue发布了Vue3；Nuxt出现了Nuxt3；Bootstrap发布了Bootstrap v5；[tailwindCSS](https://tailwindcss.com/)开始逐渐成为最现代的前端样式方案……而Nboat3，因为臃肿的、无用的功能；麻烦的部署；过时的nodejs引擎等等，已经很难再继续维护了。之前因为一些各种各样的原因，需要把网站在不同的服务器上迁移，迁移实在是麻烦事，因为每次都需要搬运Mongodb数据库、安装新的nodejs环境等等。之前的nuxtjs对nodejs的版本限制极为严格，我直到现在都没弄懂到底它最适合运行的nodejs版本是哪个。
+从GitHub记录上来看，Nboat3是2021年4月27日开始开发的，其开发到目前为止，已经过去近3年的时间了。这段时间，前端技术更新换代，Chrome正式版更新到了119.0.6045；nodejs疯狂迭代更新，发布了最新的LTS版本20.10.0；Vue发布了Vue3；Nuxt出现了Nuxt3；Bootstrap发布了Bootstrap v5；[tailwindCSS](https://tailwindcss.com/)开始逐渐成为最现代的前端样式方案……而Nboat3，Neboer3是Neboer在很菜很菜的时候开发的（现在的Neboer也非常非常菜对吧），现在因为臃肿的、无用的功能；麻烦的部署；过时的nodejs引擎等等，已经很难再继续维护了。之前因为一些各种各样的原因，需要把网站在不同的服务器上迁移，迁移实在是麻烦事，因为每次都需要搬运Mongodb数据库、安装新的nodejs环境等等。之前的nuxtjs对nodejs的版本限制极为严格，我直到现在都没弄懂到底它最适合运行的nodejs版本是哪个。
 
 最要命的是，在最近一次迁移之后，Nboat3已经无法提交新的文章和发布新的留言了，甚至连最基本的修改主页内容都难以做到。Neboer开始怀疑，是不是Nboat3出现了问题，数据库、程序，任何一个地方都不太容易debug，修复Nboat3最好的方法就是把它迁移到最新的框架上去，而迁移的难度已经完全高于从0开始开发一个新的网站了。
 
@@ -41,7 +41,39 @@ Nboat4的技术栈几乎当场就确定下来了，没有耗费任何的时间�
 
 而经过实际的体验，发现还是Hexo的可扩展性和解决的问题最多。Hugo和golang的高度绑定导致其扩展困难，而Wordpress，又过于古老。选择Hexo，最开始是一个“实验性实现”，没想到这个实验性的实现到最后实现得越来越顺手，终于变成了一个真正的Nboat4实现方法，被我们所采用，并且成功建站。
 
+## Nboat4新在何处？
+
+Nboat4是Neboer的个人主页的全新形态，它在Nboat3的*设计*基础上，进行了大量的修改、更新。它基本达到了我们之前对Nboat4的期待和要求。
+
+- 首先，Nboat4完全使用hexo静态部署，直接解决了动态部署的所有麻烦的问题。
+- Nboat4采用Bootstrap5作为组件库，对Bootstrap版本进行了更新。
+- Nboat4的开发流程非常迅速，只用大概一周左右的时间便完全开发完毕，维护难度比nuxt项目低了数个数量级。
+- Nboat4采用全宽度响应式设计，理论上应该能支持所有的设备显示，可以充分利用设备的显示空间，不会造成浪费。
+- Nboat4默认支持代码语法高亮，很容易可以扩展对数学公式等的支持。
+- Nboat4借鉴了国外知名网站[Medium](https://medium.com/)的前端设计，前端设计简洁自然。
+- Nboat4抛弃无用的“大博文”概念，将数据库中的信息变成了markdown文档中frontmatter的全部内容。
+
+- Nboat4**完全开源**，我们把网站的源代码和所有的博客全部放在了GitHub上，可以访问[github.com/Neboer/Nboat4](https://github.com/Neboer/Nboat4)获取。所有的博客更新会定期提交到仓库中，这也与Nboat3形成了区别。
+- Nboat4重新对Hexo所规范的Markdown文档进行了定义——Nboat4定义了自己的“Nboat Markdown”标准，并且为此编写了Hexo的支持插件。
+- Nboat4中，对网页的前端设计多了一些考虑，加入了树、海浪为主题的设计要素，并且搭配Bootstrap蓝，整体设计风格清新了不少。
+- Nboat4的JavaScript代码非常少，StylusCSS和EJS的代码各占一半，是一个纯前端项目。
+- Nboat4增加了博文的推荐页，用户可以直接快速访问到Neboer推荐的文章。
+- Nboat4增加了博客页内标题导航（感谢Bootstrap），宽屏浏览也可以很便捷。
+- Nboat4继续采用MIT协议开源，并且全站使用CC BY 4.0协议发布文章。Neboer第一次明确自己文章的使用权限。
+
+当然，Nboat4也引入了一些不足。
+
+- Nboat4依然没有开放评论（Neboer应该很难再开放评论了）
+- Nboat4没有访问量统计、没有点赞功能。（需要额外API支持，没有做）
+- Nboat4的自动化文章发布等需要编写脚本支持，不再可以方便的在网页中直接改动博客内容了。
+- Nboat4引入了阿里云提供的站长统计工具，也开始追踪用户了。（对不起，终究还是活成了自己讨厌的样子）
+- Nboat4依然没有开发博客历史版本的功能。
+- Nboat4使用的Nboat Markdown标准中，直接指定了图片应该上传到云端，这可能引入很大的不便。
+- Nboat4的开发过于仓促，可能还遗留很多问题没有解决。
+
 ## Nboat4的开发进程
+
+其实开发一个网站最复杂和困难的地方在什么？
 
 选择Hexo，问题并没有解决。接下来呢？我们从零开始搭建Hexo博客？用什么主题？加什么插件？需要和Nboat3的设计保持一致吗？
 
@@ -57,15 +89,15 @@ Nboat4的技术栈几乎当场就确定下来了，没有耗费任何的时间�
 
 3. menu的开发，即目录块的开发。
 
-4. 编写Python程序，将Nboat3数据库中的所有博文和留言都迁移到Nboat4中。在迁移的时候，还需要给每个文章起个新的英文名字，这个是用于生成博客的URL。
+4. 编写Python程序，将Nboat3数据库中的所有博文和留言都迁移到Nboat4中。
 
-   注意，Nboat4中的博文和留言本质上都是hexo概念中的posts。只不过留言并没有自己专属的标题而已。按理来说留言也是可以按博客的方法进行访问的，只不过这是不受支持的行为——在未来，会考虑编写插件屏蔽生成留言页，加快构建的速度，减少生成静态文件夹的大小。
+   注意，Nboat4中的博文和留言本质上都是hexo概念中的posts。只不过留言并没有自己专属的标题而已。按理来说留言也是可以按博客的方法进行访问的，只不过这是不受支持的行为——在未来，会考虑编写插件屏蔽生成留言的博客浏览页，加快构建的速度，减少生成静态文件夹的大小。
 
 5. 博客列表页的开发。这也是最复杂的一个地方。首先需要开发一个可以提取Neboer风格markdown文档的插件，放在scripts里作为helper函数让模板调用。然后再开发每个列表项的小目录块，最后再开发博客列表本身。这里需要注意响应式设计。另外我们还在博客列表的右侧添加了一个推荐阅读栏，这样最大化的利用了显示器宽屏的显示空间，还可以给我们“值得一读”的好文章更多的曝光机会（虽然本来就没什么机会就是了
 
    其实也就是在这里，可以是Nboat4设计的最重要的精神体现的地方——我们几乎完整的借鉴了[Medium](https://medium.com/)的博客页列表设计。这样使得我们的博客列表保留了Neboer的朴实风格的同时，又具有了Medium网站的现代和美观布局的特点，又方便又好看。下面是来自Medium上的网站截图，可以大概看出和Nboat4的博客列表有多么的相似。
 
-   ![](https://nboater.oss-cn-beijing.aliyuncs.com/nboat4-development-is-completed/Medium%E6%88%AA%E5%9B%BE.webp)
+   ![Medium主页](https://nboater.oss-cn-beijing.aliyuncs.com/nboat4-development-is-completed/Medium%E6%88%AA%E5%9B%BE.webp)
 
 6. 一阶段补充响应式设计：针对站点的特点，对以上所有内容进行响应式适配。搭配bootstrap自带的断点系统，使得Nboat4在任何宽度的页面上都可以正常显示。
 
@@ -85,7 +117,7 @@ Nboat，这个Neboer的个人主页系列网站，一不小心已经开发了四
 
 hexo本身还是有无限可能的。其实我们很好奇，这么强大的框架为什么只能用在个人博客上——感觉几乎所有的信息流网站都可以用hexo架构进行开发嘛，因为结构简单，而且十分方便。感觉hexo主要的问题还是文档太老，而且信息密度很底。hexo中有很多人都在下面评论，文档写的是依托答辩（逆天。
 
-![](nboat4-development-is-completed/服了hexo文档比七牛还烂.webp)
+![hexo文档下面的评论](https://nboater.oss-cn-beijing.aliyuncs.com/nboat4-development-is-completed/服了hexo文档比七牛还烂.webp)
 
 ![](https://nboater.oss-cn-beijing.aliyuncs.com/nboat4-development-is-completed/hexo%E6%96%87%E6%A1%A3%E5%BA%94%E8%AF%A5%E9%87%8D%E5%86%99%E4%BA%86.webp)
 
