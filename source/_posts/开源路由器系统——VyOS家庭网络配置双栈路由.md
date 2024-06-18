@@ -17,6 +17,7 @@ small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/opensource-system-vyos-
 mark: 100
 ---
 # 开源路由器系统——VyOS家庭网络配置双栈路由
+> 开源的软路由系统没什么稀奇的，但这个叫VyOS路由器系统真的很不一样……我们在配置路由器的过程中，继续深入的学习Linux网络栈和网络协议，并最终越过重重困难，成功实现自由的家庭网络……
 
 路由器是一个非常典型的三层网络设备，主要的工作目标，是在两个不同的网络之间交换数据，就是我们俗称的“路由”。一台典型的路由器通常需要正确的与ISP建立连接，并且申请自身的网络地址，同时发现内网设备、配置这些设备的网络地址、转发它向外部网络发送的数据包，从而让内网的设备可以“上网”。路由器还是家庭网络边防的哨兵，负责把握整个家庭网络的入口，也是连接家庭网络和公共网络的唯一通道，其重要性可想而知。
 
@@ -115,7 +116,11 @@ VyOS的文档零散，缺少教程，这个安装指南并不直接。不过没�
 2. 直接下载镜像肯定网络卡死，但请注意，文章发稿的最近中国大陆官方出台了相关规定，要求相关网站关停未经审核的开源软件镜像，docker的国内镜像很快将不再可用，比如上海交通大学docker镜像站就[即将被关闭](https://sjtug.org/post/mirror-news/2024-06-06-takedown-dockerhub/)。所以这里提供了一份代理配置方法。编辑`/etc/systemd/system/docker.service.d/http-proxy.conf`文件，在其中添加类似
 
    ```systemd
-   [Service]                                                                                                               Environment="HTTP_PROXY=http://127.0.0.1:1234"                                                                         Environment="http_proxy=http://127.0.0.1:1234"                                                                         Environment="HTTPS_PROXY=http://127.0.0.1:1234"                                                                        Environment="https_proxy=http://127.0.0.1:1234"  
+   [Service]
+   Environment="HTTP_PROXY=http://127.0.0.1:1234"
+   Environment="http_proxy=http://127.0.0.1:1234"
+   Environment="HTTPS_PROXY=http://127.0.0.1:1234"
+   Environment="https_proxy=http://127.0.0.1:1234"  
    ```
 
    的环境变量信息，配置HTTP/HTTPS代理。注意Docker的运行比较特殊，dockerd是守护进程，它需要在启动的时候被指定环境变量，而不是在docker pull的时候。所以我们直接在systemd配置中修改。
