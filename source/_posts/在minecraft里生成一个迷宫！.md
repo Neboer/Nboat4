@@ -13,7 +13,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/make_a_maze_in_minecraft/grassmaze.png
 small_cover: 
-mark: 100
+mark: 60
 ---
 # 在minecraft里生成一个迷宫！
 > 灵动MC又开派对了，Neboer这次带来了全新的项目——用代码在MC中生成一个漂亮的迷宫！

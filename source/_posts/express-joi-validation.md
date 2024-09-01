@@ -10,7 +10,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/npm.webp
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/hapi.jpg
-mark: 100
+mark: 60
 ---
 # express-joi-validation
 > 从nboat2的一个依赖窥见npm社区的一隅

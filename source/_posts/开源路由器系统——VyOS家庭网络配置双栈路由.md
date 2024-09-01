@@ -14,7 +14,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/opensource-system-vyos-home-dual-stack-router/vyos-bg-cut.webp
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/opensource-system-vyos-home-dual-stack-router/vyos_logo.png
-mark: 100
+mark: 90
 ---
 # 开源路由器系统——VyOS家庭网络配置双栈路由
 > 开源的软路由系统没什么稀奇的，但这个叫VyOS路由器系统真的很不一样……我们在配置路由器的过程中，继续深入的学习Linux网络栈和网络协议，并最终越过重重困难，成功实现自由的家庭网络……

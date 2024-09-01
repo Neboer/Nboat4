@@ -12,7 +12,7 @@ categories:
 
 big_cover: https://letsencrypt.org/images/isrg-hierarchy.png
 small_cover: https://www.hualigs.cn/image/60dfa84a4257f.jpg
-mark: 100
+mark: 60
 ---
 # Let's encrypt和acme.sh
 > 是时候弄清楚neboer.site和它所一直依赖的证书供应商与acme软件之间的关系了……阅读本文之前，我希望你能对浏览器证书、TLS、acme协议等知识有一个大概的前置了解，可能会让你获得更好的阅读体验。

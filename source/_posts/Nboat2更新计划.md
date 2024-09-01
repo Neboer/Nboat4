@@ -10,7 +10,7 @@ categories:
 
 big_cover: https://c-ssl.duitang.com/uploads/item/201510/06/20151006103346_x4YSP.thumb.1000_0.jpeg
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/nuxt.svg
-mark: 100
+mark: 60
 ---
 # Nboat2更新计划
 > 我个人打算的Nboat2的短期和长期的发展计划，将来会怎样继续做这个网站

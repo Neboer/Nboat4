@@ -10,7 +10,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 60
 ---
 # 🕵️‍ WhoIsTheUndercoverBot
 > 谁是卧底？

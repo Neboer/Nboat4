@@ -12,7 +12,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 60
 ---
 # NerChat! 更新预告
 > Nboat3部署成功了，NerChat!当然成为了我们的下一个目标。只要不断的更新，道路就会延伸……

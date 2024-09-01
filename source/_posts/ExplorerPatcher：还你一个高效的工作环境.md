@@ -17,7 +17,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 90
 ---
 # ExplorerPatcher：还你一个高效的工作环境
 > Windows 11的UI已经被喷烂了。我也知道你很讨厌这个操作系统的UI，但是我来向你介绍一款开源软件，可以完美解决你的问题，免除你纠结是否降级系统的苦恼……

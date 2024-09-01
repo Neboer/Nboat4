@@ -12,7 +12,7 @@ tags:
 categories:
 - [建站]
 small_cover: 
-mark: 100
+mark: 83
 ---
 
 # Nboat4开发完毕

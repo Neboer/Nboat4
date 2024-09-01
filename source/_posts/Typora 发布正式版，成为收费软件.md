@@ -11,7 +11,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/typora-eye.jpg
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/typora_logo.png
-mark: 100
+mark: 85
 ---
 # Typora 发布正式版，成为收费软件
 > Typora是我非常喜欢的一个markdown编辑器，我之前几乎所有的博文都是在Typora上编写的，这软件现在要钱了（直白）。这篇文章应该是neboer.site上第一篇用Abricotine编写的markdown文档。
