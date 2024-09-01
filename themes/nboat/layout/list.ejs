@@ -14,9 +14,8 @@
             </h5>
             <div class="card-body">
                 <!-- <h6 class="card-subtitle mb-2 text-body-secondary">...</h6> -->
-                <% var recommend_blogs = site.posts.filter(p => p.type === "blog").sort('mark', 'desc').slice(0, 10); %>
                 <div class="list-group list-group-flush">
-                    <% recommend_blogs.forEach((blog, index) => { %>
+                    <% calculate_recommend_list(site.posts).forEach((blog, index) => { %>
                         <a href="<%- url_for(blog.path) %>"
                            class="list-group-item list-group-item-action"><%= blog.title %></a>
                     <% }) %>
