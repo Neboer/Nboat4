@@ -16,7 +16,7 @@ categories:
 
 big_cover: 
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/Nelement.png
-mark: 100
+mark: 84
 ---
 # NerChat!的过去、开源IM的未来
 > NerChat! 最近在没有任何通知的情况下，直接更新成了一个静态部署的Element站点。这篇文章就大概讲一下，最近发生在NerChat!上的事情，以及，Neboer又捣鼓了什么。当然，Neboer也不会忘记继续嘴碎的念叨一下关于开源IM的未来的问题。

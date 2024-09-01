@@ -10,7 +10,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 60
 ---
 # Nboat3 Q&As
 > 关于这个新网站上线，可能大家会有一些想知道的东西。Neboer整理出了一些常见问题的回答供大家参考。

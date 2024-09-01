@@ -10,7 +10,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/pcr_page.webp
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/princessconnect.png
-mark: 100
+mark: 60
 ---
 # 我的PCR之旅
 > 也不是推销游戏也不是介绍什么，就是单纯的讲一讲自己想要说的话……

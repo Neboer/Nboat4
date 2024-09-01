@@ -11,7 +11,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/nboat2development.png
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/nboat2andgithub.svg
-mark: 100
+mark: 60
 ---
 # Nboat2项目开发笔记
 > 关于网站建设的细节，本来就有很多想说的，正好届nboat2上线之际稍微聊一聊开发那点事

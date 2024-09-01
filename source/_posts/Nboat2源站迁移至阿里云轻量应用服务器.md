@@ -11,7 +11,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/-114.01.jpg
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/convert_aliyun.jpg
-mark: 100
+mark: 60
 ---
 # Nboat2源站迁移至阿里云轻量应用服务器
 > 祝贺这个网站有了一个新家……

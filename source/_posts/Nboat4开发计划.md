@@ -13,7 +13,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 86
 ---
 # Nboat4开发计划
 > Neboer还是无法忘记自己是一个Web开发者的事实。所以，终于，他做出了决定——开发Nboat4。Nboat这个博客系列即将迎来又一次更新。当然，本文所讲的所有内容都尚处在画饼阶段，还没有落实在实际的开发工作中。（画饼文）

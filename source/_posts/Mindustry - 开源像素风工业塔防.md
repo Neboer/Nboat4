@@ -10,7 +10,7 @@ categories:
 
 big_cover: https://mindustrygame.github.io/images/1.png
 small_cover: https://steamcdn-a.akamaihd.net/steam/apps/1127400/header.jpg?t=1586887170
-mark: 100
+mark: 60
 ---
 # Mindustry - 开源像素风工业塔防
 > steam好评如潮，google play连续数周的霸榜，这款不一样的塔防游戏一定能让你激动不已！

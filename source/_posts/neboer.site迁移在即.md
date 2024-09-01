@@ -10,7 +10,7 @@ categories:
 
 big_cover: 
 small_cover: 
-mark: 100
+mark: 60
 ---
 # neboer.site迁移在即
 > 虽然万事万物都会有始有终，但是这并不是结束

@@ -14,7 +14,7 @@ categories:
 
 big_cover: https://nboater.oss-cn-beijing.aliyuncs.com/BypassMCPE/minecraftPE_banner.jpg
 small_cover: https://nboater.oss-cn-beijing.aliyuncs.com/BypassMCPE/minecraftPE200.jpg
-mark: 100
+mark: 95
 ---
 # Android逆向工程实战——绕过MinecraftPE正版验证
 > Neboer并不是专业的Android开发者，更不是专业的ctfer/hacker，不过如果能合理利用工具，聚集众人的智慧，说不定可以解决一些看起来比较棘手的问题。我们今天就来看看，我们是如何绕过Google Play版MinecraftPE的正版验证的。这个方法可能有一定的通用性，应该可以用来绕过一些依赖Google Play进行正版验证的、未混淆的应用。
