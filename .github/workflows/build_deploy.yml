@@ -1,4 +1,4 @@
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
+# Sample workflow for building and deploying a hexo site to GitHub Pages
 #
 name: Deploy Nboat4 site to neboer.site server
 
@@ -32,13 +32,13 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install
-      - name: Build with VitePress
+      - name: Build with hexo
         run: |
-          yarn build
+          yarn build && yarn build -f
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: vitepress-build-output
+          name: hexo-build-output
           path: public
       - name: copy file via ssh key
         uses: appleboy/scp-action@v0.1.7
