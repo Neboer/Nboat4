@@ -3,19 +3,46 @@
         <div class="post-details">
             <% if (is_post()) { %>
                 <div class="post-title">
-                    <h1><%= page.title %></h1>
+                    <h1>
+                        <%= page.title %>
+                    </h1>
                 </div>
                 <div class="post-meta">
-                    <i class="fa-solid fa-clock"></i>&nbsp;<span
-                            class="post-date"><%= date(page.date, 'YYYY/MM/DD') %></span>
+                    <i class="fa-solid fa-clock"></i>&nbsp;<span class="post-date">
+                        <%= date(page.date, 'YYYY/MM/DD' ) %>
+                    </span>
                 </div>
-            <% } %>
-            <div class="post-content" data-bs-spy="scroll" data-bs-target=".toc">
-                <%- page.content %>
-            </div>
+                <% } %>
+                    <div class="post-content" data-bs-spy="scroll" data-bs-target=".toc">
+                        <%- page.content %>
+                    </div>
         </div>
         <div class="blog-menu nav flex-column nav-underline d-none d-md-block">
-            <%- toc(page.content, {list_number: false, class_item: 'nav-item', class_link: 'nav-link', class_text: 'text-body-secondary'}) %>
+            <div class="toc-container">
+                <%- toc(page.content, {list_number: false, class_item: 'nav-item' , class_link: 'nav-link' ,
+                    class_text: 'text-body-secondary' }) %>
+            </div>
         </div>
     </div>
 </main>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var firstScrollSpyEl = document.querySelector('[data-bs-spy="scroll"]')
+        let scroll_timer;
+        firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function (event) {
+            // var active_target = document.querySelector('.toc .nav-link.active');
+            let active_target = event.relatedTarget;
+            console.log(active_target);
+            if (active_target) {
+                if (scroll_timer)
+                    clearTimeout(scroll_timer);
+                scroll_timer = setTimeout(function () {
+                    active_target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }, 100);
+            }
+        });
+    });
+
+</script>
