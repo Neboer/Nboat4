@@ -2,15 +2,56 @@
     <div class="main-container d-md-flex">
         <div class="post-details">
             <% if (is_post()) { %>
+                <!-- Hexo这里有一个比较坑的地方：site.posts.filter(p => p._id === page._id)得到了一个对象，而不是数组，需要解其中的data包。不知道为什么需要这样，文档中行为没有确定。
+                 所以在获取当前博文信息的时候，要吟唱这么长的一段内容：site.posts.filter(p => p._id === page._id).data[0]
+                 而且也不适合用get_blog_excerpt获取博客内容了，因为get_blog_excerpt在访问属性的时候并不会访问.data对象，而现在必须访问.data对象才能获取到真实的内容数据
+                 这个行为不知道为什么，和list中的行为不同。目前没有深入研究，不过这样确实可以直接work -->
+                <% var current_post = site.posts.filter(p => p._id === page._id).data[0] %>
                 <div class="post-title">
-                    <h1>
-                        <%= page.title %>
-                    </h1>
+                    <%- get_title_html(page.title) %>
                 </div>
-                <div class="post-meta">
-                    <i class="fa-solid fa-clock"></i>&nbsp;<span class="post-date">
-                        <%= date(page.date, 'YYYY/MM/DD' ) %>
-                    </span>
+                <div class="post-meta d-sm-flex">
+                    <div class="mt-sm-0 mt-1">
+                        <span class="post-meta-element" title="创建日期">
+                            <i class="fa-solid fa-file"></i>
+                            <span class="post-meta-text">
+                                <%= date(page.date, 'YYYY.MM.DD' ) %>
+                            </span>
+                        </span>
+                        <span class="post-meta-element" title="上次更新日期">
+                            <i class="fa-solid fa-file-pen"></i>
+                            <span class="post-meta-text">
+                                <%= date(page.updated, 'YYYY.MM.DD' ) %>
+                            </span>
+                        </span>
+                        <span class="post-meta-element" title="源文件字数">
+                            <i class="fa-solid fa-a"></i>
+                            <span class="post-meta-text">
+                                <%= page.raw.length %> 字
+                            </span>
+                        </span>
+                    </div>
+                    <div class="mt-sm-0 mt-1">
+                        <% var tag_names = current_post.tags.data.map(x => x.name) %>
+
+                        <% if (tag_names.length >= 1) { %>
+                            <span class="post-meta-element" title="主分类">
+                                <i class="fa-solid fa-tag"></i>
+                                <span class="post-meta-text">
+                                    <%= tag_names[0] %>
+                                </span>
+                            </span>
+                        <% } %>
+                            
+                        <% if (tag_names.length >= 2) { %>
+                            <span class="post-meta-element" title="其他分类">
+                                <i class="fa-solid fa-tags"></i>
+                                <span class="post-meta-text">
+                                    <%= tag_names.slice(1).join(", ") %>
+                                </span>
+                            </span>
+                        <% } %>
+                    </div>
                 </div>
                 <% } %>
                     <div class="post-content" data-bs-spy="scroll" data-bs-target=".toc">
