@@ -83,6 +83,10 @@ friendship_links:
     url: https://blog.cikaros.top/
     tooltip: 犹豫不决 才是最大的危害！_
     text: Cikaros's space
+  -
+    url: https://junpickle.github.io/
+    tooltip: Blog of JunPickle
+    text: Blog of JunPickle
 
 site_links:
   -
