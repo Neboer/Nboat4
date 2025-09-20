@@ -8,6 +8,7 @@ tags:
   - Arch Linux
   - 引导
   - 安装介质
+  - Alpine Linux
   - 云服务器
   - GRUB
   - UEFI
@@ -71,7 +72,7 @@ GRUB2比起其他的引导器，它真正强大的地方在于它的通用性，
 
 这个loopback.cfg其实就是一个grub.cfg，只不过它的作用是引导一个iso中的live环境，而非一个物理介质，比如U盘、CD或一块硬盘。我们找到[archiso中的loopback.cfg配置](https://gitlab.archlinux.org/archlinux/archiso/-/blob/master/configs/releng/grub/loopback.cfg?ref_type=heads)，然后观察一下它里面是什么内容。
 
-```shell
+```bash
 # https://www.supergrubdisk.org/wiki/Loopback.cfg
 
 # Search for the ISO volume
@@ -149,7 +150,7 @@ menuentry 'System restart' --class reboot --class restart {
 
 整个配置文件很长，但其实关键的核心只有几句话，我们把他们拆出来看：
 
-```shell
+```bash
 search --no-floppy --set=archiso_img_dev --file "${iso_path}"
 probe --set archiso_img_dev_uuid --fs-uuid "${archiso_img_dev}"
 linux /arch/boot/x86_64/vmlinuz-linux archisobasedir=arch img_dev=UUID=${archiso_img_dev_uuid} img_loop="${iso_path}"
@@ -528,7 +529,7 @@ cloudimg的分区结构
 
 我们使用以下alpine ipxe引导器配置。
 
-```shell
+```bash
 #!ipxe
 
 dhcp
@@ -667,7 +668,7 @@ modprobe btrfs
 
 现在你还不需要做出什么修改，你可以先在内心选择一下是否要保留btrfs的文件系统压缩。由于 Arch Linux 的 cloudimg 的磁盘挂载机制复杂，对这个地方进行修改比较麻烦，如果你觉得自己的内存确实小到需要考虑这个性能影响，请继续向下看。
 
-正常的Arch Linux安装，系统的挂载配置一般都写在 /etc/fstab 里，由 systemd-fstab-generator 负责解析，为其中的为每个条目生成对应的 `.mount` 和 `.swap` 单元文件，放在 `/run/systemd/generator/`；而在cloudimg中，磁盘的挂载配置和普通的Linux系统很不一样。cloudimg中的根分区和boot分区是由 [systemd-gpt-auto-generator](https://www.freedesktop.org/software/systemd/man/latest/systemd-gpt-auto-generator.html) 实现的，根据其文档可以看出，它对根分区的识别和自动挂载是通过[内核命令行参数](https://www.freedesktop.org/software/systemd/man/latest/systemd-gpt-auto-generator.html#root=)的 `root=`, `rootfstype=`, `rootflags=` 实现的。cloudimg内核默认的命令行参数是
+正常的Arch Linux安装，系统的挂载配置一般都写在 /etc/fstab 里，由 systemd-fstab-generator 负责解析，为其中的为每个条目生成对应的 `.mount` 和 `.swap` 单元文件，放在 `/run/systemd/generator/`；而在cloudimg中，磁盘的挂载配置和普通的Linux系统很不一样。cloudimg中的根分区和boot分区的启动自动挂载配置是由 [systemd-gpt-auto-generator](https://www.freedesktop.org/software/systemd/man/latest/systemd-gpt-auto-generator.html) 实现的，根据其文档可以看出，它对根分区的识别和自动挂载是通过[内核命令行参数](https://www.freedesktop.org/software/systemd/man/latest/systemd-gpt-auto-generator.html#root=)的 `root=`, `rootfstype=`, `rootflags=` 实现的。cloudimg内核默认的命令行参数是
 
  `BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=434d1458-3ec7-4781-baa9-3491ce070d23 rw net.ifnames=0 rootflags=compress-force=zstd console=tty0 console=ttyS0,115200` 
 
