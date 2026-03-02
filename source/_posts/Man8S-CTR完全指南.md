@@ -497,10 +497,12 @@ Man8S会尝试拉取目标镜像，拉取成功之后将本地容器停止，升
 cd 到拥有容器的主机的 /var/lib/man8s 目录，执行
 
 ```bash
-rsync -aAXHvz --numeric-ids  --include /*/nerchat-synapse  /var/lib/man8s/  root@lothric.neboer.site:/var/lib/man8s
+rsync -aAXHvz --numeric-ids --include="/*/" --include='/*/nerchat-synapse/***' --exclude='*/' --exclude='*' /var/lib/man8s/  root@lothric.neboer.site:/var/lib/man8s
 ```
 
--aAXH 与 --numeric-ids 这些标签表示尽可能保持所有的目录信息，甚至包括 xattrs （一些数据库目录如果存储进btrfs则需要写xattr关闭CoW，不过这个一般不需要担心），同时numeric-ids保证传输到目标路径后的权限数字是一致的，不会因为目标容器的同名用户与源容器的id不一致而修改容器权限uid/gid数字位。`--include /*/nerchat-synapse` 只迁移nerchat-synapse的所有挂载点。
+-aAXH 与 --numeric-ids 这些标签表示尽可能保持所有的目录信息，甚至包括 xattrs （一些数据库目录如果存储进btrfs则需要写xattr关闭CoW，不过这个一般不需要担心），同时numeric-ids保证传输到目标路径后的权限数字是一致的，不会因为目标容器的同名用户与源容器的id不一致而修改容器权限uid/gid数字位。`--include /*/nerchat-synapse/***` 只迁移nerchat-synapse的所有挂载点。
+
+注意这个迁移命令下目标必须不存在对应文件夹，不然rsync会融合。而加delete参数则问题很多，所以如果目标文件夹存在则先在目标服务器中执行 `rm -rf /var/lib/man8s/*/nerchat-synapse` 然后再执行上述命令确保容器同步。
 
 ## 迁移到Man8S
 
