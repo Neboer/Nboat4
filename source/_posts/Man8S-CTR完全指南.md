@@ -22,7 +22,7 @@ mark: 50
 
 Man8S 是极简主义的 k8s 平替。
 
-Man8S 提供 k8s 的基础功能，比如配置统一管理，镜像统一部署，数据的存储与迁移……但同时Man8S也秉持着极简的设计，没有臃肿的软件，复杂的配置及眼花缭乱的功能，我们只有核心的几个元件——containerd/nerdctl 提供容器编排，yggdrasil 提供组网VPN，cni-plugins 提供基础的容器网络功能，yggoverlay 将容器连接至VPN网络中，多说还需要一个rsync实现数据传输和nftables提供防火墙功能，除此之外，不再需要更多的东西了。所有的软件都是来自Linux开源社区，这种简单的设计却提供了相当靠谱的功能，可以让你方便的使用多个主机部署服务，构建并管理庞大的容器网络，好极了。
+Man8S 提供 k8s 的基础功能，比如配置统一管理，镜像统一部署，数据的存储与迁移……但同时Man8S也秉持着极简的设计，没有臃肿的软件，复杂的配置及眼花缭乱的功能，我们只有核心的几个元件——containerd/nerdctl 提供容器运行，yggdrasil 提供组网VPN，cni-plugins 提供基础的容器网络功能，yggoverlay 将容器连接至VPN网络中，多说还需要一个rsync实现数据传输和nftables提供防火墙功能，除此之外，不再需要更多的东西了。所有的软件都是来自Linux开源社区，这种简单的设计却提供了相当靠谱的功能，可以让你方便的使用多个主机部署服务，构建并管理庞大的容器网络，好极了。
 
 本文默认读者应该具有安装、配置和运行Docker及使用Docker Compose管理容器的能力。应该熟悉Docker中的各种概念，比如挂载、端口等等。
 
@@ -32,13 +32,13 @@ Man8S 提供 k8s 的基础功能，比如配置统一管理，镜像统一部署
 
 ### containerd 、 nerdctl与docker
 
-containerd是容器编排系统，nerdctl 是一个类似docker命令的、以containerd为目标后端（而非docker）的管理工具，提供与docker cli相似的命令接口。nerdctl 的用法与 docker 命令几乎完全一致，对于Man8S的用户来说，可以认为 nerdctl/containerd 就是 docker/docker-daemon，使用相同的理解方式来理解这两个软件即可。
+containerd是容器运行时，nerdctl 是一个类似docker命令的、以containerd为目标后端（而非docker）的管理工具，提供与docker cli相似的命令接口。nerdctl 的用法与 docker 命令几乎完全一致，对于Man8S的用户来说，可以认为 nerdctl/containerd 就是 docker/docker-daemon，使用相同的理解方式来理解这两个软件即可。
 
 ### CNI 与Linux网络名字空间(Network Namespace)
 
 Docker中，容器的组网往往通过同网桥通信来实现，但是Man8S所依赖的containerd/nerdctl 则使用 CNI 来进行组网。
 
-containerd 本身只提供容器编排功能，并不负责让编排的容器获得网络访问能力，所以每次创建好一个容器之后，都执行一个配置的CNI插件来完成容器网络的配置。
+containerd 本身只提供容器运行功能，并不负责让运行的容器获得网络访问能力，所以每次创建好一个容器之后，都执行一个配置的CNI插件来完成容器网络的配置。
 
 Linux网络名字空间是一种隔离网络环境的方法，可以在一个主机中模拟出多个不同的网络环境，每个网络环境都可以有独立的网络设备，分配独立的地址。CNI插件的作用就是在containerd/nerdctl给每个容器分配的独立的网络名字空间中创建网络设备并将其连接至主机网络中，使容器网络可以正常工作。
 
@@ -54,9 +54,9 @@ rsync 是一个极其、极其强大的软件，我们会在后文的使用方�
 
 ## Man8S 的设计理念
 
-Man8S 使用 containerd 作为容器编排系统，通过操作 nerdctl 来部署容器，整体上与docker并没太大区别。这样做的目的是，让Man8S尽可能标准的部署容器，获得容器化部署的所有好处。 containerd 是一个非常成熟的容器编排系统，它可能是所有容器玩家的最佳选择，也是最专业的、最可配置的、最稳定可靠的选择。
+Man8S 使用 containerd 作为容器运行时，通过操作 nerdctl 来部署容器，整体上与docker并没太大区别。这样做的目的是，让Man8S尽可能标准的部署容器，获得容器化部署的所有好处。 containerd 是一个非常成熟的容器运行时，它可能是所有容器玩家的最佳选择，也是最专业的、最可配置的、最稳定可靠的选择。
 
-但是containerd只是毛坯房，Man8S 只是在底层利用containerd实现容器托管编排而已，在顶层，Man8S 有着不同于 docker的、自己的一套概念。
+但是containerd只是毛坯房，Man8S 只是在底层利用containerd实现容器托管运行而已，在顶层，Man8S 作为一种全新的编排系统，有着不同于 docker的、自己的一套概念。
 
 ### 路径功能分离
 
@@ -119,6 +119,22 @@ Man8S推荐使用containerd的btrfs snapshotter，当然这是主机文件系统
    ```
 
    这个yggaddr 就是主机的 yggdrasil地址，mbctl使用它计算容器的真实地址。
+
+4. 配置 containerd
+
+    因为 containerd 的更新，现在的解包工作交给了containerd进行。对btrfs snapshotter来说，需要手动指定containerd配置，要求它加载btrfs插件。
+
+    /etc/containerd/config.toml
+
+    ```toml
+    version = 3
+
+    [[plugins."io.containerd.transfer.v1.local".unpack_config]]
+      platform = "linux/amd64"
+      snapshotter = "btrfs"
+    ```
+
+    这样就配好了。
 
 这样Man8S就装好了，是不是很方便？Man8S 使用独立的 man8s.io 名字空间，不会影响到其他容器。
 
