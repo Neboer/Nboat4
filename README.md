@@ -12,7 +12,7 @@ Nboat4，作为Neboer开发的最新的博客网站，采用了目前最流行�
 
 ## 开发与部署
 
-按照教程安装好hexo，然后使用`hexo server`启动开发服务器，使用`hexo build`构建博客网站。
+按照教程安装好hexo，然后使用`hexo server`启动开发服务器，使用`yarn build`构建博客网站。
 
 ## 可配置性
 

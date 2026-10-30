@@ -7,7 +7,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "prepare:edgeone": "python3 ci/prepare-edgeone.py"
   },
   "hexo": {
     "version": "7.3.0"
@@ -20,5 +21,6 @@
     "hexo-server": "^3.0.0",
     "marked": "^15.0.2",
     "marked-gfm-heading-id": "^4.1.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

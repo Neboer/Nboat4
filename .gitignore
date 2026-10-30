@@ -1,0 +1,10 @@
+node_modules/
+/public/
+db.json
+.deploy/
+.env
+.env.*
+.edgeone/
+.tef_dist/
+.DS_Store
+__pycache__/

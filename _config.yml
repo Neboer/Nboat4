@@ -93,7 +93,7 @@ site_links:
     img: images/links/nerchatlogo.svg
     title: NerChat!
     description: NerChat!是一个国内的开源即时聊天Matrix服务器
-    url: https://www.neboer.site/nerchat
+    url: https://nerchat-doc.neboer.site/
   -
     img: images/links/ldmc.jpg
     title: 灵动MC
