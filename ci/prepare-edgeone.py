@@ -19,6 +19,7 @@ else:
 metadata = {'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()}
 (OUTPUT / 'deployment.json').write_text(json.dumps(metadata) + '\n')
 shutil.copyfile('edgeone.json', OUTPUT / 'edgeone.json')
+shutil.copyfile('middleware.js', OUTPUT / 'middleware.js')
 shutil.copytree('edge-functions', OUTPUT / 'edge-functions', dirs_exist_ok=True)
 files = [p for p in OUTPUT.rglob('*') if p.is_file()]
 assert len(files) <= 20000, 'EdgeOne file limit exceeded'
