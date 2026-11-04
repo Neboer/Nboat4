@@ -59,5 +59,5 @@ mark: 给博客打一个100分满分的分数。
 
 本网站基于MIT协议开源，其中所有文章基于[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)协议出版。
 
-EdgeOne Functions usage: middleware is restricted to page navigation routes. CSS, JavaScript, images, fonts, and other static files bypass it. HTTP page navigation still redirects to HTTPS (308); direct HTTP asset requests are served as static files. Do not reintroduce a global middleware matcher. The standard TEO native HTTPS API accepted settings but did not enforce them on these Pages domains during live verification.
-The high-volume `/nerchat` and `/nerchat/` legacy URLs use native 308 redirects in `edgeone.json`. Nested legacy URLs retain a path-scoped function to preserve encoded paths and queries; `:splat` destinations were returned literally by the current platform in preview.
+EdgeOne Functions usage: static pages and assets bypass Functions completely. Global HTTPS middleware was removed with the operator's approval: direct HTTP URLs can return static content; HTTPS remains available. TEO native HTTPS settings and middleware matcher were accepted but did not enforce the expected behavior in live verification on these Pages domains. Do not reintroduce global middleware to implement HTTPS redirects.
+Only `/nerchat` and `/nerchat/*` legacy documentation redirects use a narrowly scoped function, preserving encoded paths and query parameters. Native `edgeone.json` redirect substitution and query preservation failed preview/live verification on the current platform.
