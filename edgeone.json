@@ -121,5 +121,17 @@
       "source": "/deployment.json",
       "cacheTtl": 0
     }
+  ],
+  "redirects": [
+    {
+      "source": "/nerchat",
+      "destination": "https://nerchat-doc.neboer.site/",
+      "statusCode": 308
+    },
+    {
+      "source": "/nerchat/",
+      "destination": "https://nerchat-doc.neboer.site/",
+      "statusCode": 308
+    }
   ]
 }
